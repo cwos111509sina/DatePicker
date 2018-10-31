@@ -174,7 +174,7 @@
     
     UILabel * lab = (UILabel *)view;
     
-    if (!lab) {
+    if (!lab) {//显示选中行时间单位
         lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, (pickerView.bounds.size.width-10)/(_pickerType<6?_pickerType:(_pickerType-4)), pickerView.frame.size.height/3)];
         lab.font = [UIFont systemFontOfSize:14];
         lab.textAlignment = NSTextAlignmentCenter;
@@ -211,7 +211,7 @@
     [pickerView reloadComponent:component];
     int index = (_pickerType<6 && component == 1)?2:((_pickerType == 8 && component == 0)?1:0);
 
-    if (index) {
+    if (index) {//选中月份时刷新天数
         NSInteger year = (index == 1)?_components.year:[_selDateArray[index-2] integerValue];
         [_dataArray replaceObjectAtIndex:index withObject:[self dayArrayMonth:[_dataArray[component][row] integerValue] year:year]];
         
